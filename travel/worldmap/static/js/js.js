@@ -146,31 +146,37 @@ $(document).ready(function() {
                 document.getElementById('departDate1').innerHTML = ''
                document.getElementById('returnDate1').innerHTML = ''
                document.getElementById('price1').innerHTML = ''
+                document.getElementById('bitcoin1').innerHTML = ''
                document.getElementById('airline1').innerHTML = ''
 
                document.getElementById('departDate2').innerHTML = ''
                document.getElementById('returnDate2').innerHTML = ''
                document.getElementById('price2').innerHTML = ''
+               document.getElementById('bitcoin2').innerHTML = ''
                document.getElementById('airline2').innerHTML = ''
 
                document.getElementById('departDate3').innerHTML = ''
                document.getElementById('returnDate3').innerHTML = ''
                document.getElementById('price3').innerHTML = ''
+               document.getElementById('bitcoin3').innerHTML = ''
                document.getElementById('airline3').innerHTML = ''
            } else {
                document.getElementById('departDate1').innerHTML = json.results[0].departure_date
                document.getElementById('returnDate1').innerHTML = json.results[0].return_date
                document.getElementById('price1').innerHTML = json.results[0].price
+               document.getElementById('bitcoin1').innerHTML = (json.results[0].price/json.bitcoin)
                document.getElementById('airline1').innerHTML = json.results[0].airline
 
                document.getElementById('departDate2').innerHTML = json.results[1].departure_date
                document.getElementById('returnDate2').innerHTML = json.results[1].return_date
                document.getElementById('price2').innerHTML = json.results[1].price
+               document.getElementById('bitcoin2').innerHTML = (json.results[1].price/json.bitcoin)
                document.getElementById('airline2').innerHTML = json.results[1].airline
 
                document.getElementById('departDate3').innerHTML = json.results[2].departure_date
                document.getElementById('returnDate3').innerHTML = json.results[2].return_date
                document.getElementById('price3').innerHTML = json.results[2].price
+               document.getElementById('bitcoin3').innerHTML = (json.results[2].price/json.bitcoin)
                document.getElementById('airline3').innerHTML = json.results[2].airline
            }
 

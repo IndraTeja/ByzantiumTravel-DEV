@@ -1,4 +1,5 @@
 from django import forms
+from exchanges.bitfinex import Bitfinex
 
 
 class FlightForm(forms.Form):

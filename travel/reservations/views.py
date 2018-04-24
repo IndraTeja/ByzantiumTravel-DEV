@@ -14,6 +14,7 @@ from amadeus import Hotels
 from django.http import HttpResponse, HttpResponseRedirect
 from django.http.response import JsonResponse
 from pyzomato import Pyzomato
+from exchanges.bitfinex import Bitfinex
 
 
 # Create your views here.
@@ -44,6 +45,7 @@ def getFlights(request):
                 departure_date = data['startdate'])
             #print(resp)
             #return HttpResponse(resp['results'][0]['price'])
+            resp['bitcoin'] = str(Bitfinex().get_current_price())
         return HttpResponse(json.dumps(resp))
 
 
