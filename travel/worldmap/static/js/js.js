@@ -199,8 +199,8 @@ $(document).ready(function() {
 });
 
 function setHotelFields(departureDate, returnDate){
-    docuement.getElementById('check_in').innerHTML = departureDate;
-    docuement.getElementById('check_out').innerHTML = returnDate;
+    document.getElementById('check_in').innerHTML = departureDate;
+    document.getElementById('check_out').innerHTML = returnDate;
 }
 
 $(document).ready(function() {
