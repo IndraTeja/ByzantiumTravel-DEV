@@ -191,11 +191,17 @@ $(document).ready(function() {
            oldText = oldText.replace(flightText, "Departure: " + json.results[0].departure_date + " Price: " + json.results[0].price);
            flightText = "Departure: " + json.results[0].departure_date + " Price: " + json.results[0].price;
            document.getElementById('bodySMS').innerHTML = oldText;
+
+           setHotelFields(json.results[0].departure_date, json.results[0].return_date);
         });
         e.preventDefault();
     });
 });
 
+function setHotelFields(departureDate, returnDate){
+    docuement.getElementById('check_in').innerHTML = departureDate;
+    docuement.getElementById('check_out').innerHTML = returnDate;
+}
 
 $(document).ready(function() {
     $('#HotelForm').submit(function(e){
