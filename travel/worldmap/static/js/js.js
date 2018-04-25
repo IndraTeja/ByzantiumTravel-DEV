@@ -188,8 +188,8 @@ $(document).ready(function() {
            }
 
            var oldText = document.getElementById('bodySMS').innerHTML;
-           oldText = oldText.replace(flightText, "Departure: " + json.results[0].departure_date + " Price: " + json.results[0].return_date);
-           flightText = "Departure: " + json.results[0].departure_date + " Price: " + json.results[0].return_date;
+           oldText = oldText.replace(flightText, "Departure: " + json.results[0].departure_date + " Price: " + json.results[0].price);
+           flightText = "Departure: " + json.results[0].departure_date + " Price: " + json.results[0].price;
            document.getElementById('bodySMS').innerHTML = oldText;
         });
         e.preventDefault();
