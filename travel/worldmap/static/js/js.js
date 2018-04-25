@@ -3,7 +3,7 @@ var locationText = "\r\n Location Info will appear here";
 var flightText = "\r\n Flight Info will appear here";
 var hotelText = "\r\n Hotel Info will appear here";
 var retaurantText = "\r\n Restaurant Info will appear here";
-document.getElementById('bodySMS').innerHTML = locationText + flightText + hotelText + retaurantText;
+
 
 //functions for filtering the locations byu category
 function displayCategory (category) {
@@ -150,10 +150,10 @@ $(document).ready(function() {
         $.post('/getFlights/', $(this).serialize(), function(data){
             var json = JSON.parse(data);
            if (json.results == undefined){
-                document.getElementById('departDate1').innerHTML = ''
+               document.getElementById('departDate1').innerHTML = ''
                document.getElementById('returnDate1').innerHTML = ''
                document.getElementById('price1').innerHTML = ''
-                document.getElementById('bitcoin1').innerHTML = ''
+               document.getElementById('bitcoin1').innerHTML = ''
                document.getElementById('airline1').innerHTML = ''
 
                document.getElementById('departDate2').innerHTML = ''
@@ -201,10 +201,10 @@ $(document).ready(function() {
         $.post('/getHotels/', $(this).serialize(), function(data1){
             var json = JSON.parse(data1);
             if (json.results == undefined){
-                document.getElementById('propertyname1').innerHTML = ''
+               document.getElementById('propertyname1').innerHTML = ''
                document.getElementById('contact1').innerHTML = ''
                document.getElementById('dprice1').innerHTML = ''
-                document.getElementById('tprice1').innerHTML = ''
+               document.getElementById('tprice1').innerHTML = ''
                document.getElementById('roomtype1').innerHTML = ''
 
                document.getElementById('propertyname2').innerHTML = ''
@@ -221,7 +221,7 @@ $(document).ready(function() {
            } else {
            document.getElementById('propertyname1').innerHTML = json.results[0].property_name
            document.getElementById('contact1').innerHTML = json.results[0].contacts[0].detail
-            document.getElementById('dprice1').innerHTML = json.results[0]['min_daily_rate']['amount']
+           document.getElementById('dprice1').innerHTML = json.results[0]['min_daily_rate']['amount']
            document.getElementById('tprice1').innerHTML = json.results[0]['total_price']['amount']
            document.getElementById('roomtype1').innerHTML = json.results[0].rooms[0].descriptions
 
@@ -297,3 +297,5 @@ function showHotels(){
   var x = document.getElementById("hotelResults")
   x.style.visibility ="visible";
 }
+
+$(document).ready(document.getElementById('bodySMS').innerHTML = locationText + flightText + hotelText + retaurantText;);
