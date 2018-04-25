@@ -2,7 +2,7 @@
 var locationText = "\r\n Location Info will appear here";
 var flightText = "\r\n Flight Info will appear here";
 var hotelText = "\r\n Hotel Info will appear here";
-var retaurantText = "\r\n Restaurant Info will appear here";
+var zomatoText = "\r\n Restaurant Info will appear here";
 
 
 //functions for filtering the locations byu category
@@ -189,7 +189,7 @@ $(document).ready(function() {
 
            var oldText = document.getElementById('bodySMS').innerHTML;
            oldText.replace(flightText, "Departure: " + json.results[0].departure_date);
-           document.getElementById('bodySMS').innerHTML = oldText
+           document.getElementById('bodySMS').innerHTML = oldText;
         });
         e.preventDefault();
     });
@@ -239,7 +239,7 @@ $(document).ready(function() {
            }
            var oldText = document.getElementById('bodySMS').innerHTML;
            oldText.replace(hotelText, "Hotel Name: " + json.results[0].property_name);
-           document.getElementById('bodySMS').innerHTML = oldText
+           document.getElementById('bodySMS').innerHTML = oldText;
         });
         e.preventDefault();
     });
@@ -284,6 +284,7 @@ $(document).ready(function() {
         });
         e.preventDefault();
     });
+    setSMSContainer();
 });
 function showRestaurants(){
   var x = document.getElementById("restaurantResults")
@@ -297,5 +298,7 @@ function showHotels(){
   var x = document.getElementById("hotelResults")
   x.style.visibility ="visible";
 }
+function setSMSContainer(){
+    document.getElementById('bodySMS').innerHTML = locationText + flightText + hotelText + zomatoText;
+}
 
-$(document).ready(document.getElementById('bodySMS').innerHTML = locationText + flightText + hotelText + retaurantText;);
