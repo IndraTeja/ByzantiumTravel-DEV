@@ -1,3 +1,10 @@
+//variables to be set to the text for the sms text area
+var locationText = "\r\n Location Info will appear here";
+var flightText = "\r\n Flight Info will appear here";
+var hotelText = "\r\n Hotel Info will appear here";
+var retaurantText = "\r\n Restaurant Info will appear here";
+document.getElementById('bodySMS').innerHTML = locationText + flightText + hotelText + retaurantText;
+
 //functions for filtering the locations byu category
 function displayCategory (category) {
     switch (category) {
@@ -180,6 +187,9 @@ $(document).ready(function() {
                document.getElementById('airline3').innerHTML = json.results[2].airline
            }
 
+           var oldText = document.getElementById('bodySMS').innerHTML;
+           oldText.replace(flightText, "Departure: " + json.results[0].departure_date);
+           document.getElementById('bodySMS').innerHTML = oldText
         });
         e.preventDefault();
     });
@@ -190,7 +200,25 @@ $(document).ready(function() {
     $('#HotelForm').submit(function(e){
         $.post('/getHotels/', $(this).serialize(), function(data1){
             var json = JSON.parse(data1);
+            if (json.results == undefined){
+                document.getElementById('propertyname1').innerHTML = ''
+               document.getElementById('contact1').innerHTML = ''
+               document.getElementById('dprice1').innerHTML = ''
+                document.getElementById('tprice1').innerHTML = ''
+               document.getElementById('roomtype1').innerHTML = ''
 
+               document.getElementById('propertyname2').innerHTML = ''
+               document.getElementById('contact2').innerHTML = ''
+               document.getElementById('dprice2').innerHTML = ''
+               document.getElementById('tprice2').innerHTML = ''
+               document.getElementById('roomtype2').innerHTML = ''
+
+               document.getElementById('propertyname3').innerHTML = ''
+               document.getElementById('contact3').innerHTML = ''
+               document.getElementById('dprice3').innerHTML = ''
+               document.getElementById('tprice3').innerHTML = ''
+               document.getElementById('roomtype3').innerHTML = ''
+           } else {
            document.getElementById('propertyname1').innerHTML = json.results[0].property_name
            document.getElementById('contact1').innerHTML = json.results[0].contacts[0].detail
             document.getElementById('dprice1').innerHTML = json.results[0]['min_daily_rate']['amount']
@@ -208,7 +236,10 @@ $(document).ready(function() {
            document.getElementById('dprice3').innerHTML = json.results[2]['min_daily_rate']['amount']
            document.getElementById('tprice3').innerHTML = json.results[2]['total_price']['amount']
            document.getElementById('roomtype3').innerHTML = json.results[2].rooms[0].descriptions
-
+           }
+           var oldText = document.getElementById('bodySMS').innerHTML;
+           oldText.replace(hotelText, "Hotel Name: " + json.results[0].property_name);
+           document.getElementById('bodySMS').innerHTML = oldText
         });
         e.preventDefault();
     });
@@ -249,7 +280,7 @@ $(document).ready(function() {
     $('#SMSForm').submit(function(e){
         $.post('/sendsms/', $(this).serialize(), function(data2){
             var json = JSON.parse(data2);
-			alert('hi from sms function');
+			//alert('hi from sms function');
         });
         e.preventDefault();
     });
