@@ -240,6 +240,12 @@ function FinalFilterAfterLocation(markerInfo){
 
     //update the search history of the user
     uploadSearch(locationName);
+
+    //put the location name into the sms text
+    var oldText = document.getElementById('bodySMS').innerHTML;
+    oldText = oldText.replace(locationText, "Location: " + locationName);
+    locationText = "Location: " + locationName;
+    document.getElementById('bodySMS').innerHTML = oldText;
 }
 
 //function for setting the star ratings

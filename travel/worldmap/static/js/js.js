@@ -1,8 +1,8 @@
 //variables to be set to the text for the sms text area
-var locationText = "\r\n Location Info will appear here";
-var flightText = "\r\n Flight Info will appear here";
-var hotelText = "\r\n Hotel Info will appear here";
-var zomatoText = "\r\n Restaurant Info will appear here";
+var locationText = "Location Info will appear here";
+var flightText = "Flight Info will appear here";
+var hotelText = "Hotel Info will appear here";
+var zomatoText = "Restaurant Info will appear here";
 
 
 //functions for filtering the locations byu category
@@ -188,7 +188,8 @@ $(document).ready(function() {
            }
 
            var oldText = document.getElementById('bodySMS').innerHTML;
-           oldText.replace(flightText, "Departure: " + json.results[0].departure_date);
+           oldText = oldText.replace(flightText, "Departure: " + json.results[0].departure_date + " Price: " + json.results[0].return_date);
+           flightText = "Departure: " + json.results[0].departure_date + " Price: " + json.results[0].return_date;
            document.getElementById('bodySMS').innerHTML = oldText;
         });
         e.preventDefault();
@@ -238,7 +239,8 @@ $(document).ready(function() {
            document.getElementById('roomtype3').innerHTML = json.results[2].rooms[0].descriptions
            }
            var oldText = document.getElementById('bodySMS').innerHTML;
-           oldText.replace(hotelText, "Hotel Name: " + json.results[0].property_name);
+           oldText = oldText.replace(hotelText, "Hotel Name: " + json.results[0].property_name + " Price: " + json.results[0]['total_price']['amount']);
+           hotelText = "Hotel Name: " + json.results[0].property_name + " Price: " + json.results[0]['total_price']['amount'];
            document.getElementById('bodySMS').innerHTML = oldText;
         });
         e.preventDefault();
@@ -271,6 +273,11 @@ $(document).ready(function() {
            document.getElementById('rating3').innerHTML = json.restaurants[2]['restaurant']['user_rating']['aggregate_rating']
            var menu3 = document.getElementById('menu3')
            menu3.setAttribute("href", json.restaurants[2]['restaurant']['menu_url'] )
+
+           var oldText = document.getElementById('bodySMS').innerHTML;
+           oldText = oldText.replace(zomatoText, "Restaurant: " + json.restaurants[0]['restaurant']['name'] + " Menu: " + json.restaurants[0]['restaurant']['menu_url']);
+           zomatoText = "Restaurant: " + json.restaurants[0]['restaurant']['name'] + " Menu: " + json.restaurants[0]['restaurant']['menu_url'];
+           document.getElementById('bodySMS').innerHTML = oldText;
         });
         e.preventDefault();
     });
@@ -299,6 +306,6 @@ function showHotels(){
   x.style.visibility ="visible";
 }
 function setSMSContainer(){
-    document.getElementById('bodySMS').innerHTML = locationText + flightText + hotelText + zomatoText;
+    document.getElementById('bodySMS').innerHTML = locationText + "\r\n" + flightText + "\r\n" + hotelText + "\r\n" + zomatoText;
 }
 
